@@ -1,0 +1,481 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.13
+-- Dumped by pg_dump version 9.3.3
+-- Started on 2015-06-17 18:37:31 CEST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 170 (class 3079 OID 11678)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1958 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 161 (class 1259 OID 16870)
+-- Name: address; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE address (
+    id bigint NOT NULL,
+    city character varying(255) NOT NULL,
+    country character varying(255),
+    state character varying(255) NOT NULL,
+    street character varying(255) NOT NULL,
+    streetnumber integer NOT NULL,
+    zipcode character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.address OWNER TO postgres;
+
+--
+-- TOC entry 162 (class 1259 OID 16875)
+-- Name: admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE admin (
+    id bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    firstname character varying(255),
+    lastname character varying(255),
+    password character varying(255)
+);
+
+
+ALTER TABLE public.admin OWNER TO postgres;
+
+--
+-- TOC entry 163 (class 1259 OID 16882)
+-- Name: customer; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE customer (
+    id bigint NOT NULL,
+    dateofbirth date,
+    email character varying(255) NOT NULL,
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255) NOT NULL,
+    password character varying(255),
+    phonenumber character varying(255),
+    registrationdate date,
+    address_id bigint
+);
+
+
+ALTER TABLE public.customer OWNER TO postgres;
+
+--
+-- TOC entry 164 (class 1259 OID 16889)
+-- Name: openjpa_sequence_table; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE openjpa_sequence_table (
+    id smallint NOT NULL,
+    sequence_value bigint
+);
+
+
+ALTER TABLE public.openjpa_sequence_table OWNER TO postgres;
+
+--
+-- TOC entry 165 (class 1259 OID 16894)
+-- Name: orderline; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE orderline (
+    id bigint NOT NULL,
+    quantity integer,
+    unitprice real,
+    orders_id bigint,
+    product_id bigint
+);
+
+
+ALTER TABLE public.orderline OWNER TO postgres;
+
+--
+-- TOC entry 166 (class 1259 OID 16899)
+-- Name: orders; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE orders (
+    id bigint NOT NULL,
+    creationtime timestamp without time zone,
+    state integer,
+    customer_id bigint,
+    terminationtime timestamp without time zone,
+    total real
+);
+
+
+ALTER TABLE public.orders OWNER TO postgres;
+
+--
+-- TOC entry 167 (class 1259 OID 16904)
+-- Name: product; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE product (
+    id bigint NOT NULL,
+    code character varying(255) NOT NULL,
+    description character varying(255),
+    instock integer,
+    name character varying(255) NOT NULL,
+    price real
+);
+
+
+ALTER TABLE public.product OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 16912)
+-- Name: product_provider; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE product_provider (
+    products_id bigint,
+    providers_id bigint
+);
+
+
+ALTER TABLE public.product_provider OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 16915)
+-- Name: provider; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE provider (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    partitaiva character varying(255) NOT NULL,
+    address_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.provider OWNER TO postgres;
+
+--
+-- TOC entry 1942 (class 0 OID 16870)
+-- Dependencies: 161
+-- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY address (id, city, country, state, street, streetnumber, zipcode) FROM stdin;
+251	ROME	lazio	italy	Via Felice Cavallotti	119	00152
+1051	ROME	lazio	italy	Via Felice Cavallotti	119	00152
+1151	ROME	lazio	italy	viale Marconi	12	00150
+1351	Borgo Grappa	lazio	italy	via della vergogna	12	00125
+1601	ROME	lazio	italy	Via Felice Cavallotti	100	00152
+4000	Venezia	veneto	italy	via mestre	20	02345
+4999	Napoli	Campania	italy	via castroni	34	00987
+\.
+
+
+--
+-- TOC entry 1943 (class 0 OID 16875)
+-- Dependencies: 162
+-- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY admin (id, email, firstname, lastname, password) FROM stdin;
+1	admin@live.it	Edoardo	Forte	admin
+751	admin@gmail.com	Leopoldo	De Rango	admin
+\.
+
+
+--
+-- TOC entry 1944 (class 0 OID 16882)
+-- Dependencies: 163
+-- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY customer (id, dateofbirth, email, firstname, lastname, password, phonenumber, registrationdate, address_id) FROM stdin;
+201	\N	giorgiomaria@live.it	Giorgio	De Rango	rocco	34000000	2014-06-13	251
+1001	1995-09-19	azzurra@live.it	azzurra	De Rango	azzurra	23455555	2014-06-16	1051
+1101	1992-06-01	dario@yahoo.it	dario	gasparroni	azzurra	3334555	2014-06-16	1151
+1551	1991-01-17	giorgio@gmail.com	Giorgio	De Rangone	rocco	30000300	2014-06-16	1601
+\.
+
+
+--
+-- TOC entry 1945 (class 0 OID 16889)
+-- Dependencies: 164
+-- Data for Name: openjpa_sequence_table; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY openjpa_sequence_table (id, sequence_value) FROM stdin;
+0	1701
+\.
+
+
+--
+-- TOC entry 1946 (class 0 OID 16894)
+-- Dependencies: 165
+-- Data for Name: orderline; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY orderline (id, quantity, unitprice, orders_id, product_id) FROM stdin;
+351	1	920	301	152
+451	5	4.19999981	401	51
+452	3	18.5	401	101
+551	2	4.19999981	501	51
+552	4	18.5	501	101
+553	1	920	501	152
+701	6	0.699999988	651	601
+851	16	920	801	152
+852	100	18.5	802	101
+853	400	0.699999988	802	601
+854	40	920	803	152
+951	10	4.19999981	901	51
+1251	10	4.19999981	1201	51
+1501	400	1.79999995	1451	1401
+1502	1	920	1452	152
+\.
+
+
+--
+-- TOC entry 1947 (class 0 OID 16899)
+-- Dependencies: 166
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY orders (id, creationtime, state, customer_id, terminationtime, total) FROM stdin;
+401	2014-06-14 09:32:36.36	1	201	\N	\N
+501	2014-06-14 10:08:16.01	0	201	2014-06-15 21:06:14.17	\N
+301	2014-06-13 23:35:23.35	0	201	2014-06-15 21:06:27.19	\N
+651	2014-06-15 10:15:39.09	0	201	2014-06-15 21:06:14.25	\N
+801	2014-06-16 00:38:41.1	1	201	\N	\N
+803	2014-06-16 00:45:45.65	0	201	2014-06-16 00:50:18.93	\N
+802	2014-06-16 00:44:10	0	201	2014-06-16 00:51:21.85	\N
+901	2014-06-16 10:23:16.84	0	201	2014-06-16 11:03:59.14	42
+1201	2014-06-16 13:53:13.46	1	1101	\N	42
+1451	2014-06-16 16:06:55.38	1	201	\N	720
+1452	2014-06-16 16:09:15.43	1	1551	\N	920
+\.
+
+
+--
+-- TOC entry 1948 (class 0 OID 16904)
+-- Dependencies: 167
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY product (id, code, description, instock, name, price) FROM stdin;
+152	QWE127	personal computer, Apple.	8	MAC BOOK AIR 11'	920
+101	QWE124	repellente per pulci e zecche; prodotto indicato per cani.	96	ADVANTIX	18.5
+601	QWE128I	farina tipo 00	194	FARINA 00	0.699999988
+51	QWE123	repellente per insetti, ideale per prevenire le punture di zanzara	188	AUTAN	4.19999981
+1401	QWE78R	temperino	400	TEMPERINO AXO	1.79999995
+1651	QWER43	lampada molto luminosa  abbasso consumo	200	LAMPADA HITECH	200
+\.
+
+
+--
+-- TOC entry 1949 (class 0 OID 16912)
+-- Dependencies: 168
+-- Data for Name: product_provider; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY product_provider (products_id, providers_id) FROM stdin;
+1401	1301
+1651	1301
+1651	2222
+\.
+
+
+--
+-- TOC entry 1950 (class 0 OID 16915)
+-- Dependencies: 169
+-- Data for Name: provider; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY provider (id, name, partitaiva, address_id) FROM stdin;
+1301	ciccio.sas	0012werse45	1351
+2222	FratelliRisorse&co	p.erty6yk	4000
+4444	Arcore.spa	0004567yt6	4999
+\.
+
+
+--
+-- TOC entry 1816 (class 2606 OID 16874)
+-- Name: address_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY address
+    ADD CONSTRAINT address_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1818 (class 2606 OID 16879)
+-- Name: admin_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT admin_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1822 (class 2606 OID 16886)
+-- Name: customer_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1827 (class 2606 OID 16893)
+-- Name: openjpa_sequence_table_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY openjpa_sequence_table
+    ADD CONSTRAINT openjpa_sequence_table_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1830 (class 2606 OID 16898)
+-- Name: orderline_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1833 (class 2606 OID 16903)
+-- Name: orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1835 (class 2606 OID 16908)
+-- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY product
+    ADD CONSTRAINT product_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1840 (class 2606 OID 16919)
+-- Name: provider_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY provider
+    ADD CONSTRAINT provider_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1820 (class 2606 OID 16881)
+-- Name: u_admin_email; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT u_admin_email UNIQUE (email);
+
+
+--
+-- TOC entry 1825 (class 2606 OID 16888)
+-- Name: u_customr_email; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT u_customr_email UNIQUE (email);
+
+
+--
+-- TOC entry 1823 (class 1259 OID 16909)
+-- Name: i_customr_address; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_customr_address ON customer USING btree (address_id);
+
+
+--
+-- TOC entry 1831 (class 1259 OID 16911)
+-- Name: i_orders_customer; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_orders_customer ON orders USING btree (customer_id);
+
+
+--
+-- TOC entry 1828 (class 1259 OID 16910)
+-- Name: i_ordrlin_product; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_ordrlin_product ON orderline USING btree (product_id);
+
+
+--
+-- TOC entry 1836 (class 1259 OID 16920)
+-- Name: i_prdcvdr_element; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_prdcvdr_element ON product_provider USING btree (providers_id);
+
+
+--
+-- TOC entry 1837 (class 1259 OID 16921)
+-- Name: i_prdcvdr_products_id; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_prdcvdr_products_id ON product_provider USING btree (products_id);
+
+
+--
+-- TOC entry 1838 (class 1259 OID 16922)
+-- Name: i_providr_address; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX i_providr_address ON provider USING btree (address_id);
+
+
+--
+-- TOC entry 1957 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-06-17 18:37:31 CEST
+
+--
+-- PostgreSQL database dump complete
+--
+
