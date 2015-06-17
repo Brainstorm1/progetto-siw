@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>BECOME A SUPERMARKET USER</title>
+<title>BECOME A MARKET USER</title>
 </head>
-<body style="background-color: LEMONCHIFFON">
+<body style="background-color: POWDERBLUE">
 <f:view>
 <h:form>
 <h1>Register your self</h1>

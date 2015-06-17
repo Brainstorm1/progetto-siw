@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Insert title here</title>
 </head>
-<body style="background-color: yellow">
+<body style="background-color: MISTYROSE">
 <f:view>
 <table>
 		<tr><th>Customer id</th><th>Customer's firstname</th><th>Customer's lastname</th><th>Customer's phonenumber</th><th>Customer's birth date</th><th>Customer's registration date</th><tr>

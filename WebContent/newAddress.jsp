@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>New Address</title>
 </head>
-<body style="background-color: MISTYROSE">
+<body style="background-color: SKYBLUE">
 <f:view>
 <h:form>
 <h1>Complete the following fields</h1>

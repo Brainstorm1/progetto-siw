@@ -10,10 +10,10 @@
 </head>
 <c:choose>
 	<c:when test="${adminController.log}">
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 	</c:when>
 	<c:when test="${customerController.log}">
-<body style="background-color: pink">
+<body style="background-color: SKYBLUE">
 	</c:when>
 	<c:otherwise>
 <body>

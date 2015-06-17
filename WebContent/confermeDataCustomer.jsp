@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Data Summary</title>
 </head>
-<body style="background-color: MISTYROSE">
+<body style="background-color: SKYBLUE">
 <f:view>
 <h:form>
 <h1>Overview of your credenzials</h1>
@@ -22,7 +22,7 @@
 <li>${customerController.state}</li>
 <li>${customerController.zipcode}</li>
 </ul>
-<div>	<h:commandButton value="Conferme"  action="#{customerController.createCustomer}" />
+<div>	<h:commandButton value="Confirm"  action="#{customerController.createCustomer}" />
 	
 </div>
 </h:form>

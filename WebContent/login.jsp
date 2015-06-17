@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>LOGIN</title>
 </head>
-<body style="background-color: LEMONCHIFFON">
+<body style="background-color: SKYBLUE">
 <f:view>
 <h1>Insert your credentials</h1>
 <h:form>

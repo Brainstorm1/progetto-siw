@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Home</title>
 </head>
-<body style="background-color: MISTYROSE">
+<body style="background-color: SKYBLUE">
 <f:view>
 <h1>${customerController.customer.firstname}'s home </h1>
 <h2>${customerController.customer.address.city}, ${customerController.customer.address.street}, ${customerController.customer.address.streetNumber}</h2>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Insert title here</title>
 </head>
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h:form>
 <h1>Overview of your credenzials</h1>
@@ -19,7 +19,7 @@
 <li>${providerController.state}</li>
 <li>${providerController.zipcode}</li>
 </ul>
-<div>	<h:commandButton value="Conferme"  action="#{providerController.createProvider}" />
+<div>	<h:commandButton value="Confirm"  action="#{providerController.createProvider}" />
 	
 </div>
 </h:form>

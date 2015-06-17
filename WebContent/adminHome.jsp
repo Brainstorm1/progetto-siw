@@ -13,7 +13,7 @@
 <title>ADMIN ${adminController.admin.firstname}'S HOMEPAGE</title>
 </head>
 <c:if test="${adminController.log}">
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <h1> Hi Admin ${adminController.admin.firstname}</h1>
 <f:view>
 <h:form>

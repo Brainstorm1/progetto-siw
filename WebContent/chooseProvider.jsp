@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h:form>
 <table>

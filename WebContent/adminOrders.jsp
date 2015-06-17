@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>ORDERS</title>
 </head>
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h:form>
 	<table>
@@ -20,7 +20,7 @@
 				<td>${order.creationTime}</td>
 				<td>${order.terminationTime}</td>
 				<td><h:commandButton value="Order details" action="#{orderController.findOrder(order)}" /></td>
-				<td>  <FONT color="yellow"> ______________ </FONT>    </td>
+				<td>  <FONT color="blue"> ______________ </FONT>    </td>
 				<td>${order.customer.id}</td>
 				<td><h:commandButton value="Customer details" action="#{customerController.findCustomer(order.customer)}" /></td>
 			</tr>

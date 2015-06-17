@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>New Product</title>
 </head>
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h:form>
     <div>Name: <h:inputText value="#{productController.name}" 

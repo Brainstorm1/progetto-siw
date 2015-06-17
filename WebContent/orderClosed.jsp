@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>ORDER N. ${orderController.order.id} CLOSED</title>
 </head>
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h1>Order ${orderController.order.id} was closed properly</h1>
 

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Confirmation data product</title>
 </head>
-<body style="background-color: LIGHTGOLDENRODYELLOW">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h:form>
 	<h1>${productController.name}</h1>
@@ -19,7 +19,7 @@
 	<c:forEach var="provider" items="#{productController.providers}">
 	<div>Provider: ${provider.name}</div>
 	</c:forEach>
-	<h:commandLink action="#{productController.createProduct}" value="conferme product"> </h:commandLink>
+	<h:commandLink action="#{productController.createProduct}" value="confirm product"> </h:commandLink>
 </h:form>
 </f:view>
 </body>

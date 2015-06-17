@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>ADMIN LOGN</title>
 </head>
-<body style="background-color: LEMONCHIFFON">
+<body style="background-color: MISTYROSE">
 <f:view>
 <h1>Insert your credentials ADMIN</h1>
 <h:form>
